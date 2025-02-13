@@ -23,6 +23,9 @@ pipeline {
           image 'mysql:latest'
         }
       }
+      steps {
+        sh 'SELECT COUNT(*)'
+      }
     }
   }
 }
