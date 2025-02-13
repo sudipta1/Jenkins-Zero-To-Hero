@@ -24,7 +24,7 @@ pipeline {
         }
       }
       steps {
-        sh mysql -u root -e "SELECT 1;"
+        sh ''' mysql -u root -e "SELECT 1;" '''
       }
     }
   }
