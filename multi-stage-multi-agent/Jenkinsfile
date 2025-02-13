@@ -17,14 +17,22 @@ pipeline {
         sh 'node --version'
       }
     }
-    stage('db') {
+   stage('db') {
       agent {
         docker {
           image 'mysql:latest'
+          args '-e MYSQL_ROOT_PASSWORD=root -p 3306:3306'
         }
       }
       steps {
-        sh ''' mysql -u root -e "SELECT 1;" '''
+        sh '''
+          # Start MySQL server
+          service mysql start
+          # Wait for MySQL server to be ready
+          sleep 10
+          # Run the SQL query
+          mysql -h 127.0.0.1 -P 3306 -u root -proot -e "SELECT 1;"
+        '''
       }
     }
   }
