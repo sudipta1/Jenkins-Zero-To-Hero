@@ -17,7 +17,7 @@ pipeline {
         sh ''' 
              a=10
              b=67
-             add = $((a + b))
+             add=$((a + b))
          echo "Addition is : $add"
         '''
       }
