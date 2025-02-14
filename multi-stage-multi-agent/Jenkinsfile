@@ -14,7 +14,12 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'echo "Hello Wworld"'
+        sh ' 
+             a=10
+             b=67
+             add = $((a + b))
+         echo "Addition is : " ${add}
+        '
       }
     }
   }
