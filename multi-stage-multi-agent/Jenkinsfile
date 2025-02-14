@@ -17,23 +17,5 @@ pipeline {
         sh 'node --version'
       }
     }
- stage('db') {
-      agent {
-        docker {
-          image 'mysql:latest'
-          args '-e MYSQL_ROOT_PASSWORD=root'
-        }
-      }
-      steps {
-        sh '''
-          # Start MySQL server in the background
-          docker-entrypoint.sh mysqld &
-          # Wait for MySQL server to be ready
-          sleep 30
-          # Run the SQL query
-          mysql -h 127.0.0.1 -P 3306 -u root -proot -e "SELECT 1;"
-        '''
-      }
-    }
   }
 }
