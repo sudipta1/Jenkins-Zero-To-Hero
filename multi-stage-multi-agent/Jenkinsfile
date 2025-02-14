@@ -18,7 +18,7 @@ pipeline {
              a=10
              b=67
              add = $((a + b))
-         echo "Addition is : " ${add}
+         echo "Addition is : ${add}"
         '''
       }
     }
