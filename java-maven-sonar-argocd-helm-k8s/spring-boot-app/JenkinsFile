@@ -1,3 +1,6 @@
+/*Jenkins 
+pipeline*/
+
 pipeline {
   agent {
     docker {
