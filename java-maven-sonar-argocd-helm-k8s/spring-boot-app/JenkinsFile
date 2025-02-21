@@ -68,13 +68,13 @@ pipeline {
 
   post {
     success {
-      slackSend channel: '#your-channel', message: "✅ Build #${BUILD_NUMBER} succeeded! 🎉"
+      slackSend channel: '#all-owner-devops', message: "✅ Build #${BUILD_NUMBER} succeeded! 🎉"
     }
     failure {
-      slackSend channel: '#your-channel', message: "❌ Build #${BUILD_NUMBER} failed! Check Jenkins logs. 🔍"
+      slackSend channel: '#all-owner-devops', message: "❌ Build #${BUILD_NUMBER} failed! Check Jenkins logs. 🔍"
     }
     always {
-      slackSend channel: '#your-channel', message: "📢 Build #${BUILD_NUMBER} completed."
+      slackSend channel: '#all-owner-devops', message: "📢 Build #${BUILD_NUMBER} completed."
     }
   }
 }
