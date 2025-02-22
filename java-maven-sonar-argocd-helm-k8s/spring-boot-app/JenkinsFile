@@ -64,6 +64,7 @@ pipeline {
             }
         }
     }
+}
 
   post {
     success {
@@ -76,5 +77,4 @@ pipeline {
       slackSend channel: '#all-owner-devops', message: "📢 Build #${BUILD_NUMBER} completed."
     }
   }
- }
 }
