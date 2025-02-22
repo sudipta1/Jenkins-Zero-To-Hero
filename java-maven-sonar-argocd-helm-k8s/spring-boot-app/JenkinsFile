@@ -43,6 +43,7 @@ pipeline {
                 sh 'docker push ${ECR_REPO}:${IMAGE_TAG}'
       }
     }
+  }
 }
     stage('Update Deployment File') {
         environment {
@@ -63,7 +64,6 @@ pipeline {
             }
         }
     }
-  }
 
   post {
     success {
@@ -76,4 +76,5 @@ pipeline {
       slackSend channel: '#all-owner-devops', message: "📢 Build #${BUILD_NUMBER} completed."
     }
   }
+ }
 }
