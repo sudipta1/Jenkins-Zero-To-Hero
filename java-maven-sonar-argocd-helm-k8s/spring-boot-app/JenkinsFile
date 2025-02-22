@@ -12,7 +12,7 @@ pipeline {
     AWS_ACCOUNT_ID = "365657944743"  // Change this to your AWS Account ID
   }
 
-  stages {
+stages {
     stage('Checkout'){
       steps {
         sh 'echo passed'
@@ -36,7 +36,7 @@ pipeline {
         }
       }
     }
- stage('Install AWS CLI') {
+    stage('Install AWS CLI') {
       steps {
         sh '''
           apt-get update && apt-get install -y awscli
@@ -44,7 +44,7 @@ pipeline {
         '''
       }
     }
-stage('Configure AWS CLI') {
+    stage('Configure AWS CLI') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
           sh '''
@@ -62,7 +62,7 @@ stage('Configure AWS CLI') {
         }
       }
     }
-     stage('Build and Push Docker Image to ECR') {
+    stage('Build and Push Docker Image to ECR') {
       environment {
         DOCKER_IMAGE = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${BUILD_NUMBER}"
       }
